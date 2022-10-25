@@ -29,13 +29,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Move();        
-        Grounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
-    }
-
-    private void Move()
-    {
         Vector3 movement = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * speed);
         rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
+        Grounded = Physics.CheckSphere(groundCheck.position, 0.2f, groundLayer);
     }
 }

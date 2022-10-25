@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public enum RotationAxes{
-        MouseXandY = 0,
+    public enum RotationAxes{       
         MouseX = 1,
         MouseY = 2
     }
-    public RotationAxes axes = RotationAxes.MouseXandY;
+    public RotationAxes axes = RotationAxes.MouseX;
     public float sensitivityHor = 9.0f;
     public float sensitivityVer = 9.0f;
 
@@ -44,15 +43,5 @@ public class MouseLook : MonoBehaviour
             float rotationY = transform.localEulerAngles.y;
             transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
         } 
-        else
-        {
-            _rotationX -= Input.GetAxis("Mouse Y") * sensitivityVer;
-            _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
-
-            float delta = Input.GetAxis("Mouse X") * sensitivityHor;
-            float rotationY = transform.localEulerAngles.y + delta;
-
-            transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
-        }
     }
 }
